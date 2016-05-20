@@ -461,7 +461,9 @@ public class TarArchiveInputStream extends ArchiveInputStream {
             int read = 0;
             while((ch = i.read()) != -1) {
                 read++;
-                if (ch == ' '){ // End of length string
+                if (ch == '\n') { // blank line in header
+                    break;
+                } else if (ch == ' '){ // End of length string
                     // Get keyword
                     ByteArrayOutputStream coll = new ByteArrayOutputStream();
                     while((ch = i.read()) != -1) {
