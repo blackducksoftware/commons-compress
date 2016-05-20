@@ -850,7 +850,7 @@ public class TarArchiveEntry implements TarConstants, ArchiveEntry {
             return true;
         }
 
-        if (getName().endsWith("/")) {
+        if (!isPaxHeader() && !isGlobalPaxHeader() && getName().endsWith("/")) {
             return true;
         }
 
